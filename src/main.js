@@ -15,6 +15,7 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/tracker', component: Tracker },
   { path: '/projects', component: Projects },
+  { path: '/projects/:id', component: Projects },
   { path: '/about', component: About }
 ]
 
