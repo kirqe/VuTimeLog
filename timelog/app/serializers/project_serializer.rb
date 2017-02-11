@@ -1,8 +1,14 @@
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :title, :rate, :created_at
+  attributes :project
   has_many :logs
 
-  def created_at
-    object.created_at.strftime('%m/%d/%Y')
+  def project
+    {
+      id: object.id,
+      title: object.title,
+      rate: object.rate,
+      created_at: object.created_at.strftime('%m/%d/%Y')
+    }
   end
+
 end

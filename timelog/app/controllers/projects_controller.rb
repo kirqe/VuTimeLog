@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :update, :destroy]
 
   def index
-    render json: Project.all
+    render json: Project.with_logs
   end
 
   def show
