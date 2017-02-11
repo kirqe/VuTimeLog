@@ -15,8 +15,9 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner'
+  gem 'ffaker'
   gem 'byebug', platform: :mri
 end
 

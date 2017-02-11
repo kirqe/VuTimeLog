@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+30.times {
+  Project.create(title: FFaker::Lorem.phrase(5), rate: rand(100))
+}
+
+100.times {
+  Log.create(name: FFaker::Lorem.phrase(5), time: rand(1000), project_id: rand(30))
+}
