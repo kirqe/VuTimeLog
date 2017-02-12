@@ -2,6 +2,7 @@ import * as types from './mutation_types'
 import _ from 'underscore'
 
 export default {
+  // Tracker
   [types.START] (state) {
     state.started = true
     state.stopped = false
@@ -17,6 +18,11 @@ export default {
   [types.SET_NOTE] (state, note) {
     state.newRecord.title = note
   },
+  // Projects
+  [types.FETCH_PROJECTS] (state, projects) {
+    state.projects = projects.body
+  },
+  // Logs
   [types.ADD_RECORD] (state) {
     addRecord(state)
     state.counter = 0

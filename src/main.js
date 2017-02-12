@@ -13,9 +13,12 @@ import About from './views/About'
 Vue.use(VueRouter)
 
 const routes = [
+  // TODO
+  // Add some sort of statistics page for default rout
+  // { path: '/', component: Dashboard },
   { path: '/tracker', component: Tracker },
   { path: '/projects', component: Projects },
-  { path: '/projects/:id', component: Projects },
+  { path: '/projects/:id', name: 'project', component: Projects },
   { path: '/about', component: About }
 ]
 

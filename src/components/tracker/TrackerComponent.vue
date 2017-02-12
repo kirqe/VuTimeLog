@@ -40,7 +40,7 @@ export default {
     margin-bottom: 15px;
   }
   .active {
-    border-color: #4CAF50;
+    border-color: #71CA71;
   }
   .error {
     border-color: #E68F8D;

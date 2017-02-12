@@ -15,6 +15,7 @@ const state = {
   rate: 0,
   newRecord: {},
   errors: [],
+  projects: [],
   records: [
     { id: '1486424772177', title: 'Project init and setup', time: 600 },
     { id: '1486424773888', title: 'Configure webpack, lol', time: 1000 },

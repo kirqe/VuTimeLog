@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="header">
-          <h2 id="title">TimeLog</h2>&nbsp;/&nbsp;
+          <h2 id="title"><span class="emphasize">Vu</span>TimeLog</h2>&nbsp;/&nbsp;
           <span id="nav-links">
             <router-link to="/tracker">Tracker</router-link>
             <router-link to="/projects">Projects</router-link>
@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="css" scoped>
   .header {
     font-size: 16px;
   }
@@ -38,5 +38,8 @@ export default {
   }
   #nav-links a {
     padding-right: 2px;
+  }
+  .emphasize {
+    color: #71CA71;
   }
 </style>
