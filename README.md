@@ -1,4 +1,4 @@
-# timelog
+# VuTimeLog
 
 VuTimeLog is a timetracker ish sample app built with the following tools to learn some vue.js
 
