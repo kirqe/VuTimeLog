@@ -6,13 +6,23 @@ export default {
   start: ({commit}) => {
     commit(types.START)
   },
-  stop: ({commit}) => {
-    commit(types.STOP)
-    commit(types.ADD_RECORD)
+  stop: (store) => {
+    store.commit(types.STOP)
+    let ap = getters.getActiveProject(store.state)
+    let newLog = getters.getNewLog(store.state)
+    api.createNewLog(newLog, ap.id).then(response => {
+      store.commit(types.ADD_RECORD, response.body)
+    })
   },
   fetchProjects: ({commit}) => {
     api.fetchProjects().then(response => {
       commit(types.FETCH_PROJECTS, response)
+    })
+  },
+  creatNeweLog: (store, data) => {
+    let ap = getters.getActiveProject(store.state)
+    api.createNewLog(data, ap.id).then(response => {
+      store.commit(types.ADD_RECORD, response)
     })
   },
   updateProject: (store, id) => {

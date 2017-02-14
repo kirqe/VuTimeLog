@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-md-4">
-      <tracker-component :project="project"></tracker-component>
+      <tracker-component :project="project" :newLog="newLog"></tracker-component>
     </div>
     <div class="col-md-8">
       <div class="info" v-show="project.logs.length === 0">
@@ -25,7 +25,8 @@ export default {
     RecordsComponent
   },
   computed: mapGetters({
-    project: 'getActiveProject'
+    project: 'getActiveProject',
+    newLog: 'getNewLog'
   })
 }
 </script>

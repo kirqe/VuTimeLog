@@ -2,8 +2,8 @@
   <div class="tracker-wrap">
     <div class="tracker" :class="{active:istracking}">
       <state-title-component></state-title-component>
-      <time-component></time-component>
-      <note-component></note-component>
+      <time-component :newLog="newLog"></time-component>
+      <note-component :newLog="newLog"></note-component>
       <controls-component></controls-component>
     </div>
     <summary-component :project="project"></summary-component>
@@ -30,7 +30,7 @@ export default {
   computed: mapGetters({
     istracking: 'isTracking'
   }),
-  props: ['project']
+  props: ['project', 'newLog']
 }
 </script>
 

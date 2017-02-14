@@ -3,7 +3,7 @@ import getters from './getters'
 import _ from 'underscore'
 
 export default {
-  // Tracker
+  // TRACKER
   [types.START] (state) {
     state.started = true
     state.stopped = false
@@ -16,10 +16,7 @@ export default {
     state.istracking = false
     state.interval = clearInterval(state.interval)
   },
-  [types.SET_NOTE] (state, note) {
-    state.newRecord.title = note
-  },
-  // Projects
+  // PROJECTS
   [types.FETCH_PROJECTS] (state, projects) {
     state.projects = projects.body
   },
@@ -29,10 +26,15 @@ export default {
   [types.SET_ACTIVE_PROJECT] (state, id) {
     state.activeProject = getters.getProjectById(state, id)
   },
-  // Logs
-  [types.ADD_RECORD] (state) {
-    addRecord(state)
-    state.counter = 0
+  // LOGS
+  [types.SET_NOTE] (state, note) {
+    state.newLog.name = note
+  },
+  [types.ADD_RECORD] (state, data) {
+    let ap = getters.getActiveProject(state)
+    ap.logs.unshift(data)
+    state.newLog.name = ''
+    state.newLog.time = 0
   },
   [types.DELETE_RECORD] (state, id) {
     state.records = _.filter(state.records, (record) => {
@@ -42,14 +44,5 @@ export default {
 }
 
 function tick (state) {
-  state.counter ++
-}
-
-function addRecord (state) {
-  let newRecord = {
-    id: new Date().getTime(),
-    title: state.newRecord.title,
-    time: state.counter
-  }
-  state.records.unshift(newRecord)
+  state.newLog.time ++
 }
