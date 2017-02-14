@@ -1,4 +1,5 @@
 import * as types from './mutation_types'
+import getters from './getters'
 import _ from 'underscore'
 
 export default {
@@ -21,6 +22,12 @@ export default {
   // Projects
   [types.FETCH_PROJECTS] (state, projects) {
     state.projects = projects.body
+  },
+  [types.RENAME_PROJECT] (state, data) {
+    getters.getProjectById(state, data.id).title = data.title
+  },
+  [types.SET_ACTIVE_PROJECT] (state, id) {
+    state.activeProject = getters.getProjectById(state, id)
   },
   // Logs
   [types.ADD_RECORD] (state) {

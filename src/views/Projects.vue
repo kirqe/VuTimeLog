@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="row">
     <div class="col-md-12">
-      <loader-component :list="projects" class="loader text-center"></loader-component>
+      <loader-component :list="projects"></loader-component>
       <projects-component :projects="projects"></projects-component>
     </div>
   </div>

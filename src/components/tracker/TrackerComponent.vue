@@ -1,11 +1,12 @@
 <template>
-  <div class="tracker" :class="{active:istracking}">
-    <state-title-component></state-title-component>
-    <time-component></time-component>
-    <note-component></note-component>
-    <controls-component></controls-component>
-    <hr/>
-    <total-earnings-component></total-earnings-component>
+  <div class="tracker-wrap">
+    <div class="tracker" :class="{active:istracking}">
+      <state-title-component></state-title-component>
+      <time-component></time-component>
+      <note-component></note-component>
+      <controls-component></controls-component>
+    </div>
+    <summary-component :project="project"></summary-component>
   </div>
 </template>
 
@@ -14,7 +15,7 @@ import StateTitleComponent from './StateTitleComponent'
 import TimeComponent from './TimeComponent'
 import NoteComponent from './NoteComponent'
 import ControlsComponent from './ControlsComponent'
-import TotalEarningsComponent from './TotalEarningsComponent'
+import SummaryComponent from './SummaryComponent'
 
 import { mapGetters } from 'vuex'
 
@@ -24,11 +25,12 @@ export default {
     TimeComponent,
     NoteComponent,
     ControlsComponent,
-    TotalEarningsComponent
+    SummaryComponent
   },
   computed: mapGetters({
     istracking: 'isTracking'
-  })
+  }),
+  props: ['project']
 }
 </script>
 

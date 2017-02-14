@@ -18,7 +18,7 @@ const routes = [
   // { path: '/', component: Dashboard },
   { path: '/tracker', component: Tracker },
   { path: '/projects', component: Projects },
-  { path: '/projects/:id', name: 'project', component: Projects },
+  { path: '/projects/:id', name: 'project', component: Tracker },
   { path: '/about', component: About }
 ]
 

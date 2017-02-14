@@ -1,10 +1,14 @@
 <template>
   <div class="row">
     <div class="col-md-4">
-      <tracker-component></tracker-component>
+      <tracker-component :project="project"></tracker-component>
     </div>
     <div class="col-md-8">
-      <records-component :records="records"></records-component>
+      <div class="info" v-show="project.logs.length === 0">
+        <h3 >No logs here yet. Start logging time.</h3>
+        <img src="../assets/arrow.png"/>
+      </div>
+      <records-component :records="project.logs"></records-component>
     </div>
   </div>
 </template>
@@ -21,7 +25,7 @@ export default {
     RecordsComponent
   },
   computed: mapGetters({
-    records: 'getRecords'
+    project: 'getActiveProject'
   })
 }
 </script>

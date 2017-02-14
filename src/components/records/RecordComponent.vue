@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="record">
-    <span class="label time">{{ record.time | htime }}</span> - {{record.title}}
+    <span class="label time">{{ record.time | htime }}</span> - {{record.name}}
     <span class="del pull-right" @click="deleteRecord(record.id)">x</span>
   </div>
 </template>

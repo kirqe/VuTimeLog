@@ -1,17 +1,18 @@
 <template lang="html">
-  <div class="project">
+  <div class="project" @click="setActiveProject(project.id)">
     <router-link :to="{name: 'project', params: {id: project.id}}">
     {{project.title}}</router-link> -
     <span class="label earned">Earned: $ {{project.earned}}</span>
     <span class="label rate">{{project.rate}}/h</span>
     <span class="label rate">logs: {{project.logs_count}}</span>
-
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
-  props: ['project']
+  props: ['project'],
+  methods: mapActions(['setActiveProject'])
 }
 </script>
 

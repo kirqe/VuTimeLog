@@ -1,3 +1,5 @@
+import _ from 'underscore'
+
 export default {
   isStarted: state => state.started,
   isStopped: state => state.stopped,
@@ -5,6 +7,10 @@ export default {
   getMinutes: state => Math.floor(state.counter / 60),
   getSeconds: state => state.counter,
   getProjects: state => state.projects,
-  getRecords: state => state.records,
+  getActiveProject: state => state.activeProject,
+  getProjectById: (state, id) => {
+    return _.findWhere(state.projects, { id: id })
+  },
+  getRecords: state => state.activeProject.logs,
   getNote: state => state.note
 }
