@@ -5,6 +5,7 @@
     <h4>Title: {{project.title}}</h4>
     <h4>Created: {{project.created_at}}</h4>
     <h4>Logs count: {{project.logs_count}}</h4>
+    <h4>Total time: {{project.total_time | htime }}</h4>
     <hr/>
     <div class="form-group">
       <em>Earnings for this project according to your rate</em>
