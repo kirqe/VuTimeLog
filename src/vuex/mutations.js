@@ -36,9 +36,9 @@ export default {
     state.newLog.name = ''
     state.newLog.time = 0
   },
-  [types.DELETE_RECORD] (state, id) {
-    state.records = _.filter(state.records, (record) => {
-      return record.id !== id
+  [types.DELETE_LOG] (state, id) {
+    state.activeProject.logs = _.filter(state.activeProject.logs, (log) => {
+      return log.id !== id
     })
   }
 }

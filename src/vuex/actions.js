@@ -19,12 +19,6 @@ export default {
       commit(types.FETCH_PROJECTS, response)
     })
   },
-  creatNeweLog: (store, data) => {
-    let ap = getters.getActiveProject(store.state)
-    api.createNewLog(data, ap.id).then(response => {
-      store.commit(types.ADD_RECORD, response)
-    })
-  },
   updateProject: (store, id) => {
     let project = getters.getProjectById(store.state, id)
     api.updateProject(project)
@@ -35,7 +29,10 @@ export default {
   setNote: ({commit}, event) => {
     commit(types.SET_NOTE, event.target.value)
   },
-  deleteRecord: ({commit}, event) => {
-    commit(types.DELETE_RECORD, event)
+  deleteLog: ({commit}, id) => {
+    api.deleteLog(id).then(response => {
+      commit(types.DELETE_LOG, id)
+    })
+    console.log(id)
   }
 }

@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="form-group">
-    <input type="text" @input="setNote" :disabled="isTracking" class="form-control" placeholder="what are you working on?" />
+    <input type="text" @input="setNote" :value="getNewLog.name" :disabled="isTracking" class="form-control" placeholder="what are you working on?" />
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  computed: mapGetters(['isTracking']),
+  computed: mapGetters(['isTracking', 'getNewLog']),
   methods: mapActions(['setNote'])
 }
 </script>
