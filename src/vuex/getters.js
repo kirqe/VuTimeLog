@@ -17,5 +17,6 @@ export default {
     return _.findWhere(state.projects, { id: id })
   },
   getNewLog: state => state.newLog,
-  getRecords: state => state.activeProject.logs
+  getRecords: state => state.activeProject.logs,
+  getNetworkStat: state => state.network
 }

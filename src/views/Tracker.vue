@@ -1,5 +1,8 @@
 <template>
   <div class="row">
+    <div v-show="network" class="col-md-12">
+      <div class="alert alert-danger">Failed to proceed request</div>
+    </div>
     <div class="col-md-4">
       <tracker-component :project="project" :newLog="newLog"></tracker-component>
     </div>
@@ -26,7 +29,8 @@ export default {
   },
   computed: mapGetters({
     project: 'getActiveProject',
-    newLog: 'getNewLog'
+    newLog: 'getNewLog',
+    network: 'getNetworkStat'
   })
 }
 </script>

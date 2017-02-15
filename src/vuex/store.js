@@ -10,13 +10,12 @@ const state = {
   started: false,
   stopped: false,
   istracking: false,
-  status: null,
-  rate: 0,
   newLog: {
+    project_id: null,
     name: '',
-    time: 0
+    time: null
   },
-  errors: [],
+  network: false,
   projects: [],
   activeProject: {
     id: 10,

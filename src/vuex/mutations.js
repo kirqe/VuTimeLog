@@ -18,13 +18,14 @@ export default {
   },
   // PROJECTS
   [types.FETCH_PROJECTS] (state, projects) {
-    state.projects = projects.body
+    state.projects = projects
   },
   [types.RENAME_PROJECT] (state, data) {
     getters.getProjectById(state, data.id).title = data.title
   },
   [types.SET_ACTIVE_PROJECT] (state, id) {
     state.activeProject = getters.getProjectById(state, id)
+    state.newLog.project_id = id
   },
   // LOGS
   [types.SET_NOTE] (state, note) {
@@ -33,16 +34,28 @@ export default {
   [types.ADD_RECORD] (state, data) {
     let ap = getters.getActiveProject(state)
     ap.logs.unshift(data)
-    state.newLog.name = ''
-    state.newLog.time = 0
+    clearNewLog(state)
   },
   [types.DELETE_LOG] (state, id) {
     state.activeProject.logs = _.filter(state.activeProject.logs, (log) => {
       return log.id !== id
     })
+  },
+  [types.NETWORK_PROBLEM] (state) {
+    state.network = true
+    let toggle = () => {
+      state.network = false
+    }
+    clearNewLog(state)
+    setTimeout(toggle, 3000)
   }
 }
 
 function tick (state) {
   state.newLog.time ++
+}
+
+function clearNewLog (state) {
+  state.newLog.name = ''
+  state.newLog.time = 0
 }

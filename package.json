@@ -2,7 +2,7 @@
   "name": "timelog",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "railsr <ikll7@yahoo.com>",
+  "author": "railsr <railsr@yahoo.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -13,9 +13,9 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "underscore": "^1.8.3",
     "vue": "^2.1.0",
-    "vue-resource": "^1.2.0",
     "vuex": "^2.1.1"
   },
   "devDependencies": {
