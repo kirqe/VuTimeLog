@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :logs, only: :destroy
-  resources :projects do
-    resources :logs, only: :create
+  namespace :api do
+    namespace :v1 do
+      resources :projects
+      resources :logs
+    end
   end
 end
