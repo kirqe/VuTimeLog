@@ -8,9 +8,9 @@ export default {
   },
   stop: (store) => {
     store.commit(types.STOP)
-    let ap = getters.getActiveProject(store.state)
+    let ap = getters.getActiveProject(store.state).id
     let newLog = getters.getNewLog(store.state)
-    api.createNewLog(newLog, ap.id).then(response => {
+    api.createNewLog(newLog, ap).then(response => {
       store.commit(types.ADD_RECORD, response.body)
     })
   },

@@ -3,8 +3,9 @@ import VueResource from 'vue-resource'
 
 Vue.use(VueResource)
 
-const ProjectsResource = Vue.resource('http://localhost:3000/' + 'projects{/proj_id}')
-const LogsResource = Vue.resource('http://localhost:3000/' + 'projects{/proj_id}/' + 'logs{/log_id/}')
+const ProjectsResource = Vue.resource('http://localhost:3000/' + 'projects{/id}')
+const NestedLogsResource = Vue.resource('http://localhost:3000/' + 'projects{/id}/' + 'logs')
+const LogsResource = Vue.resource('http://localhost:3000/' + 'logs{/id}/')
 
 export default {
   fetchProjects: () => {
@@ -14,15 +15,15 @@ export default {
     return ProjectsResource.save(data)
   },
   updateProject: (data) => {
-    return ProjectsResource.update({ proj_id: data.id }, data)
+    return ProjectsResource.update({ id: data.id }, data)
   },
   deleteProject: (id) => {
-    return ProjectsResource.remove({ proj_id: id })
+    return ProjectsResource.remove({ id: id })
   },
   createNewLog: (data, id) => {
-    return LogsResource.save({proj_id: id}, data)
+    return NestedLogsResource.save({id: id}, data)
   },
   deleteLog: (id) => {
-    return LogsResource.remove({log_id: id})
+    return LogsResource.remove({id: id})
   }
 }

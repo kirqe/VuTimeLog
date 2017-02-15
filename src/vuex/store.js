@@ -19,32 +19,23 @@ const state = {
   errors: [],
   projects: [],
   activeProject: {
-    id: 4,
-    title: 'Sit veniam ut voluptatem illum quia excepturi.',
-    rate: '16.0',
+    id: 10,
+    title: 'Mollitia perspiciatis vitae ut quis asperiores nihil.',
+    rate: '38.0',
     created_at: '02/10/2017',
-    logs_count: 4,
-    earned: '9.42',
+    logs_count: 2,
+    total_time: 1894,
+    earned: '19.99',
     logs: [
       {
-        id: 7,
-        name: 'Rem aut est enim quidem doloremque rerum.',
-        time: 982
+        id: 50,
+        name: 'Rerum blanditiis non excepturi quo eum.',
+        time: 949
       },
       {
-        id: 16,
-        name: 'Ab sit vel qui voluptatibus velit sapiente sint nisi et.',
-        time: 239
-      },
-      {
-        id: 25,
-        name: 'Facilis ducimus repellendus minima qui repudiandae deleniti pariatur.',
-        time: 473
-      },
-      {
-        id: 28,
-        name: 'Ut eligendi distinctio eos libero quia nemo pariatur sint accusamus.',
-        time: 425
+        id: 3,
+        name: 'Rerum non natus quia ut reiciendis perspiciatis quos.',
+        time: 945
       }
     ]
   }
