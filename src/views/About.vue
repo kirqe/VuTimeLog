@@ -10,10 +10,7 @@
       <li><a href="https://github.com/rails/rails" target="_blank">rails 5</a></li>
     </ul>
 
-    If you have more experience and found an error or see something that can be improved or just built wrong, feel free to create an issue or a pull request :)
-
-    <h3>Here's a link to the repo: <a href="https://github.com/kirqe/VuTimeLog" target="_blank">https://github.com/kirqe/VuTimeLog</a></h3>
-
+    <h3>Repo: <a href="https://github.com/kirqe/VuTimeLog" target="_blank">https://github.com/kirqe/VuTimeLog</a></h3>
     </p>
   </div>
 </template>
