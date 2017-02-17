@@ -3,8 +3,6 @@ module Api::V1
     before_action :set_log_and_project, only: [:destroy]
 
     def create
-      # project = Project.find(params[:project_id])
-      # @log = project.logs.new(log_params)
       @log = Log.new(log_params)
       if @log.save
         render json: @log, status: :created
