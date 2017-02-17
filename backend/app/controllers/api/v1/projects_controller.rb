@@ -13,7 +13,7 @@ module Api::V1
     def create
       @project = Project.new(project_params)
       if @project.save
-        render json: @project, status: :created, location: @project
+        render json: @project, status: :created
       else
         render json: @project.errors, status: :unprocessable_entity
       end

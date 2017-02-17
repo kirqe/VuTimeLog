@@ -17,6 +17,9 @@ export default {
     state.interval = clearInterval(state.interval)
   },
   // PROJECTS
+  [types.ADD_PROJECT] (state, project) {
+    state.projects.unshift(project)
+  },
   [types.FETCH_PROJECTS] (state, projects) {
     state.projects = projects
   },

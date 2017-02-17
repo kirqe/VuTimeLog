@@ -1,14 +1,18 @@
 <template lang="html">
   <div class="projects">
+    <add-project-component></add-project-component>
     <project-component v-for="project in projects" :project="project"></project-component>
   </div>
 </template>
 
 <script>
 import ProjectComponent from './ProjectComponent'
+import AddProjectComponent from './AddProjectComponent'
+
 export default {
   components: {
-    ProjectComponent
+    ProjectComponent,
+    AddProjectComponent
   },
   props: ['projects']
 }

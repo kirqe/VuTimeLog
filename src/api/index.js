@@ -17,9 +17,9 @@ export default {
   fetchProjectById: (id) => {
     return axios.get(Projects + id)
   },
-  // addNewProject: (data) => {
-  //   return ProjectsResource.save(data)
-  // },
+  submitProject: (data) => {
+    return axios.post(Projects, {project: data})
+  },
   // updateProject: (data) => {
   //   return ProjectsResource.update({ id: data.id }, data)
   // },

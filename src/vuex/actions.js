@@ -16,6 +16,12 @@ export default {
     }, response => {
       store.commit(types.NETWORK_PROBLEM)
     })
+
+    // var fetch = () => {
+    //   store.dispatch('fetchProject', newLog.project_id)
+    // }
+    //
+    // setTimeout(fetch, 2000)
   },
   // PROJECTS
   fetchProjects: ({commit}) => {
@@ -30,6 +36,11 @@ export default {
       })
     }
   },
+  saveProject: ({commit}, project) => {
+    api.submitProject(project).then(response => {
+      commit(types.ADD_PROJECT, response.data)
+    })
+  },
   updateProject: (store, id) => {
     let project = getters.getProjectById(store.state, id)
     api.updateProject(project)
@@ -41,7 +52,7 @@ export default {
   setNote: ({commit}, event) => {
     commit(types.SET_NOTE, event.target.value)
   },
-  deleteLog: ({commit}, id) => {
+  deleteLog: ({store, commit}, id) => {
     api.deleteLog(id).then(response => {
       commit(types.DELETE_LOG, id)
     }, response => {
