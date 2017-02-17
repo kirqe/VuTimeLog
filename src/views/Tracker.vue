@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row" v-if="project">
     <div v-show="network" class="col-md-12">
       <div class="alert alert-danger">Failed to proceed request</div>
     </div>
@@ -19,19 +19,25 @@
 <script>
 import TrackerComponent from '../components/tracker/TrackerComponent'
 import RecordsComponent from '../components/records/RecordsComponent'
+import LoaderComponent from '../components/LoaderComponent'
 
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
     TrackerComponent,
-    RecordsComponent
+    RecordsComponent,
+    LoaderComponent
   },
   computed: mapGetters({
     project: 'getActiveProject',
     newLog: 'getNewLog',
     network: 'getNetworkStat'
-  })
+  }),
+  methods: mapActions(['fetchProject']),
+  beforeMount () {
+    this.fetchProject(this.$route.params.id)
+  }
 }
 </script>
 

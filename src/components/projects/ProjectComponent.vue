@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="project" @click="setActiveProject(project.id)">
+  <div class="project">
     <router-link :to="{name: 'project', params: {id: project.id}}">
     {{project.title}}</router-link> -
     <span class="label earned">Earned: $ {{project.earned}}</span>

@@ -5,7 +5,7 @@
         <div class="header">
           <h2 id="title"><span class="emphasize">Vu</span>TimeLog</h2>&nbsp;/&nbsp;
           <span id="nav-links">
-            <router-link to="/tracker">Tracker</router-link>
+            <router-link v-show="getActiveProject !== null" to="/tracker">Tracker</router-link>
             <router-link to="/projects">Projects</router-link>
             <router-link to="/about">About</router-link>
           </span>
@@ -20,8 +20,9 @@
 
 <script>
 import store from './vuex/store'
-
+import { mapGetters } from 'vuex'
 export default {
+  computed: mapGetters(['getActiveProject']),
   store
 }
 </script>

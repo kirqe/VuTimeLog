@@ -1,6 +1,7 @@
 import * as types from './mutation_types'
 import getters from './getters'
 import api from '../api'
+// import _ from 'underscore'
 
 export default {
   // TRACKER
@@ -22,12 +23,19 @@ export default {
       commit(types.FETCH_PROJECTS, response.data)
     })
   },
+  fetchProject: ({store, commit}, id) => {
+    if (id) {
+      api.fetchProjectById(id).then(response => {
+        commit(types.SET_ACTIVE_PROJECT, response.data)
+      })
+    }
+  },
   updateProject: (store, id) => {
     let project = getters.getProjectById(store.state, id)
     api.updateProject(project)
   },
-  setActiveProject: ({commit}, id) => {
-    commit(types.SET_ACTIVE_PROJECT, id)
+  setActiveProject: ({commit}, project) => {
+    commit(types.SET_ACTIVE_PROJECT, project)
   },
   // LOGS
   setNote: ({commit}, event) => {

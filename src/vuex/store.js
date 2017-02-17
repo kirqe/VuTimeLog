@@ -17,27 +17,7 @@ const state = {
   },
   network: false,
   projects: [],
-  activeProject: {
-    id: 10,
-    title: 'Mollitia perspiciatis vitae ut quis asperiores nihil.',
-    rate: '38.0',
-    created_at: '02/10/2017',
-    logs_count: 2,
-    total_time: 1894,
-    earned: '19.99',
-    logs: [
-      {
-        id: 50,
-        name: 'Rerum blanditiis non excepturi quo eum.',
-        time: 949
-      },
-      {
-        id: 3,
-        name: 'Rerum non natus quia ut reiciendis perspiciatis quos.',
-        time: 945
-      }
-    ]
-  }
+  activeProject: null
 }
 
 export default new Vuex.Store({

@@ -23,9 +23,9 @@ export default {
   [types.RENAME_PROJECT] (state, data) {
     getters.getProjectById(state, data.id).title = data.title
   },
-  [types.SET_ACTIVE_PROJECT] (state, id) {
-    state.activeProject = getters.getProjectById(state, id)
-    state.newLog.project_id = id
+  [types.SET_ACTIVE_PROJECT] (state, data) {
+    state.activeProject = data
+    state.newLog.project_id = data.id
   },
   // LOGS
   [types.SET_NOTE] (state, note) {
