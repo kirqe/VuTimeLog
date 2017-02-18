@@ -24,8 +24,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
 export default {
   data () {
     return {
@@ -37,7 +35,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['saveProject']),
+    saveProject (project) {
+      this.$store.dispatch('saveProject', project)
+      this.project = {}
+      this.toggleAdd()
+    },
     toggleAdd () {
       this.isAdding = !this.isAdding
     }

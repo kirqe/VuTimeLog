@@ -9,10 +9,8 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 export default {
-  props: ['project'],
-  methods: mapActions(['setActiveProject'])
+  props: ['project']
 }
 </script>
 
