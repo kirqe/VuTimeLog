@@ -7,7 +7,7 @@
       <controls-component></controls-component>
     </div>
     <summary-component :project="project"></summary-component>
-    <button class="btn btn-danger" @click.prevent="deleteProject(project.id)">Delete project</button>
+    <button class="btn btn-sm btn-danger" @click.prevent="deleteProject(project.id)">Delete this project (no confirmation)</button>
   </div>
 </template>
 
