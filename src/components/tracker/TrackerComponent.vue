@@ -7,6 +7,7 @@
       <controls-component></controls-component>
     </div>
     <summary-component :project="project"></summary-component>
+    <button class="btn btn-danger" @click.prevent="deleteProject(project.id)">Delete project</button>
   </div>
 </template>
 
@@ -30,6 +31,12 @@ export default {
   computed: mapGetters({
     istracking: 'isTracking'
   }),
+  methods: {
+    deleteProject (id) {
+      this.$store.dispatch('deleteProject', id)
+      this.$router.push('/projects')
+    }
+  },
   props: ['project', 'newLog']
 }
 </script>

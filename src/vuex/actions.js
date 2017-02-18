@@ -37,8 +37,13 @@ export default {
     }
   },
   saveProject: ({commit}, project) => {
-    api.submitProject(project).then(response => {
+    api.saveProject(project).then(response => {
       commit(types.ADD_PROJECT, response.data)
+    })
+  },
+  deleteProject: ({commit}, id) => {
+    api.deleteProject(id).then(response => {
+      commit(types.DELETE_PROJECT, id)
     })
   },
   updateProject: (store, id) => {

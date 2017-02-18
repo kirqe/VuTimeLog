@@ -17,15 +17,15 @@ export default {
   fetchProjectById: (id) => {
     return axios.get(Projects + id)
   },
-  submitProject: (data) => {
+  saveProject: (data) => {
     return axios.post(Projects, {project: data})
   },
   // updateProject: (data) => {
   //   return ProjectsResource.update({ id: data.id }, data)
   // },
-  // deleteProject: (id) => {
-  //   return ProjectsResource.remove({ id: id })
-  // },
+  deleteProject: (id) => {
+    return axios.delete(Projects + id)
+  },
   createNewLog: (data) => {
     return axios.post(Logs, {log: data}, config)
   },

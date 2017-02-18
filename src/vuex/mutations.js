@@ -20,6 +20,11 @@ export default {
   [types.ADD_PROJECT] (state, project) {
     state.projects.unshift(project)
   },
+  [types.DELETE_PROJECT] (state, id) {
+    state.projects = _.filter(state.projects, (project) => {
+      return project.id !== id
+    })
+  },
   [types.FETCH_PROJECTS] (state, projects) {
     state.projects = projects
   },
