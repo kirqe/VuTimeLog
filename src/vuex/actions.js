@@ -12,7 +12,7 @@ export default {
     store.commit(types.STOP)
     let newLog = getters.getNewLog(store.state)
     api.createNewLog(newLog).then(response => {
-      store.commit(types.ADD_RECORD, response.data)
+      store.commit(types.ADD_LOG, response.data)
     }, response => {
       store.commit(types.NETWORK_PROBLEM)
     })

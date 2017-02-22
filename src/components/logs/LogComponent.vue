@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="record">
-    <span class="label time">{{ record.time | htime }}</span> - {{record.name}}
-    <span class="del pull-right" @click="deleteLog(record.id)">x</span>
+    <span class="label time">{{ log.time | htime }}</span> - {{log.name}}
+    <span class="del pull-right" @click="deleteLog(log.id)">x</span>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
   methods: mapActions({
     deleteLog: 'deleteLog'
   }),
-  props: ['record']
+  props: ['log']
 }
 </script>
 

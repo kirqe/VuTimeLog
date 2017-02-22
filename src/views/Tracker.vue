@@ -11,14 +11,14 @@
         <h3 >No logs here yet. Start logging time.</h3>
         <img src="../assets/arrow.png"/>
       </div>
-      <records-component :records="project.logs"></records-component>
+      <logs-component :logs="project.logs"></logs-component>
     </div>
   </div>
 </template>
 
 <script>
 import TrackerComponent from '../components/tracker/TrackerComponent'
-import RecordsComponent from '../components/records/RecordsComponent'
+import LogsComponent from '../components/logs/LogsComponent'
 import LoaderComponent from '../components/LoaderComponent'
 
 import { mapGetters, mapActions } from 'vuex'
@@ -26,7 +26,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   components: {
     TrackerComponent,
-    RecordsComponent,
+    LogsComponent,
     LoaderComponent
   },
   computed: mapGetters({

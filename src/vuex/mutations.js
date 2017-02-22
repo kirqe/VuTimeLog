@@ -39,7 +39,7 @@ export default {
   [types.SET_NOTE] (state, note) {
     state.newLog.name = note
   },
-  [types.ADD_RECORD] (state, data) {
+  [types.ADD_LOG] (state, data) {
     let ap = getters.getActiveProject(state)
     ap.logs.unshift(data)
     clearNewLog(state)
