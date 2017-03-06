@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="record">
     <span class="label time">{{ log.time | htime }}</span> - {{log.name}}
-    <span class="del pull-right" @click="deleteLog(log.id)">x</span>
+    <span class="del pull-right" @click="deleteLog(log.id)"><i class="glyphicon glyphicon-trash"></i></span>
   </div>
 </template>
 
@@ -30,7 +30,7 @@ export default {
     cursor: pointer;
   }
   .del {
-    color: #E0E0E0;
+    color: #E68F8D;
     display: none;
   }
 </style>

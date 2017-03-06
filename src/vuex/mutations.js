@@ -24,6 +24,7 @@ export default {
     state.projects = _.filter(state.projects, (project) => {
       return project.id !== id
     })
+    state.activeProject = null
   },
   [types.FETCH_PROJECTS] (state, projects) {
     state.projects = projects
@@ -36,12 +37,8 @@ export default {
     state.newLog.project_id = data.id
   },
   // LOGS
-  [types.SET_NOTE] (state, note) {
-    state.newLog.name = note
-  },
   [types.ADD_LOG] (state, data) {
-    let ap = getters.getActiveProject(state)
-    ap.logs.unshift(data)
+    getters.getActiveProject(state).logs.unshift(data)
     clearNewLog(state)
   },
   [types.DELETE_LOG] (state, id) {
@@ -49,10 +46,13 @@ export default {
       return log.id !== id
     })
   },
-  [types.NETWORK_PROBLEM] (state) {
-    state.network = true
+  [types.SET_NOTE] (state, note) {
+    state.newLog.name = note
+  },
+  [types.ERROR] (state) {
+    state.error = true
     let toggle = () => {
-      state.network = false
+      state.error = false
     }
     clearNewLog(state)
     setTimeout(toggle, 3000)

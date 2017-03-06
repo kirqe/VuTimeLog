@@ -1,6 +1,6 @@
 <template>
   <div class="row" v-if="project">
-    <div v-show="network" class="col-md-12">
+    <div v-show="err" class="col-md-12">
       <div class="alert alert-danger">Failed to proceed request</div>
     </div>
     <div class="col-md-4">
@@ -32,7 +32,7 @@ export default {
   computed: mapGetters({
     project: 'getActiveProject',
     newLog: 'getNewLog',
-    network: 'getNetworkStat'
+    err: 'getErrorStat'
   }),
   methods: mapActions(['fetchProject']),
   beforeMount () {

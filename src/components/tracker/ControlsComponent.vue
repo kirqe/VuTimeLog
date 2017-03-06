@@ -10,7 +10,13 @@ import {mapGetters, mapActions} from 'vuex'
 
 export default {
   computed: mapGetters(['isStarted', 'isStopped', 'getNewLog']),
-  methods: mapActions(['start', 'stop'])
+  methods: {
+    ...mapActions(['start']),
+    stop () {
+      this.$emit('stopped')
+      this.$store.dispatch('stop')
+    }
+  }
 }
 </script>
 

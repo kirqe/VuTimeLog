@@ -31,4 +31,5 @@ new Vue({
   components: { App },
   router,
   filters
-}).$mount('#app')
+})
+// .$mount('#app')

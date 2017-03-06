@@ -18,5 +18,5 @@ export default {
   },
   getNewLog: state => state.newLog,
   getLogs: state => state.activeProject.logs,
-  getNetworkStat: state => state.network
+  getErrorStat: state => state.error
 }

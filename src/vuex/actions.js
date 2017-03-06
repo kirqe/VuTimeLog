@@ -14,7 +14,7 @@ export default {
     api.createNewLog(newLog).then(response => {
       store.commit(types.ADD_LOG, response.data)
     }, response => {
-      store.commit(types.NETWORK_PROBLEM)
+      store.commit(types.ERROR)
     })
 
     // var fetch = () => {
@@ -61,7 +61,7 @@ export default {
     api.deleteLog(id).then(response => {
       commit(types.DELETE_LOG, id)
     }, response => {
-      commit(types.NETWORK_PROBLEM)
+      commit(types.ERROR)
     })
   }
 }

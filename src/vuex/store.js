@@ -10,14 +10,14 @@ const state = {
   started: false,
   stopped: false,
   istracking: false,
+  error: false,
+  projects: [],
+  activeProject: null,
   newLog: {
     project_id: null,
     name: '',
     time: null
-  },
-  network: false,
-  projects: [],
-  activeProject: null
+  }
 }
 
 export default new Vuex.Store({
