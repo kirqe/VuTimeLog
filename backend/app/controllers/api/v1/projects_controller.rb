@@ -3,11 +3,15 @@ module Api::V1
     before_action :set_project, only: [:show, :update, :destroy]
 
     def index
-      render json: Project.with_logs
+      render json: @current_user.projects.with_logs
     end
 
     def show
-      render json: @project
+      if @current_user.projects.include?(@project)
+        render json: @project
+      else
+        render json: @project.errors, status: :unprocessable_entity
+      end
     end
 
     def create

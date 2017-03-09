@@ -7,8 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+10.times do |u|
+  User.create(name: FFaker::Name.first_name,
+              email: "test#{u}@test.com",
+              password: 'test')
+end
+
 30.times {
-  Project.create(title: FFaker::Lorem.phrase(5), rate: rand(100))
+  Project.create(title: FFaker::Lorem.phrase(5), rate: rand(100), user_id: rand(10))
 }
 
 100.times {
