@@ -17,7 +17,8 @@ const state = {
     project_id: null,
     name: '',
     time: null
-  }
+  },
+  authenticated: false
 }
 
 export default new Vuex.Store({

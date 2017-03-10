@@ -15,7 +15,7 @@ module Api::V1
     end
 
     def create
-      @project = Project.new(project_params)
+      @project = @current_user.projects.build(project_params)
       if @project.save
         render json: @project, status: :created
       else
@@ -42,7 +42,7 @@ module Api::V1
     end
 
     def project_params
-      params.require(:project).permit(:title, :rate)
+      params.require(:project).permit(:title, :rate, :user_id)
     end
   end
 end

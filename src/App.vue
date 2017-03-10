@@ -7,7 +7,8 @@
           <span id="nav-links">
             <router-link v-show="getActiveProject !== null" to="/tracker">Tracker</router-link>
             <router-link to="/projects">Projects</router-link>
-            <router-link to="/about">About</router-link>
+            <a @click="logout()">Logout</a>
+            <router-link to="/about" id="abt">About</router-link>
           </span>
           <hr/>
         </div>
@@ -20,8 +21,14 @@
 
 <script>
 import store from './vuex/store'
+import auth from './api/auth'
 import { mapGetters } from 'vuex'
 export default {
+  methods: {
+    logout () {
+      auth.logout()
+    }
+  },
   computed: mapGetters(['getActiveProject']),
   store
 }
@@ -42,5 +49,8 @@ export default {
   }
   .emphasize {
     color: #71CA71;
+  }
+  #abt {
+    color: #eee;
   }
 </style>
