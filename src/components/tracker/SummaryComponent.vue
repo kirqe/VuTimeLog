@@ -9,7 +9,7 @@
     <hr/>
     <div class="form-group">
       <em>Earnings for this project according to your rate</em>
-      <input type="number" class="form-control" v-model.number="project.rate" placeholder="what's your rate per hour?"/>
+      <input type="number" class="form-control" @change="updateProject(project)" v-model.number="project.rate" placeholder="what's your rate per hour?"/>
       <h4 v-show="project.rate">Earned: $ {{earnings}}</h4>
     </div>
   </div>
@@ -17,8 +17,10 @@
 
 <script>
 import _ from 'underscore'
+import { mapActions } from 'vuex'
 
 export default {
+  methods: mapActions(['updateProject']),
   computed: {
     earnings () {
       let sum = _.reduce(this.project.logs, (s, f) => { return f.time + s }, 0)

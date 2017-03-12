@@ -3,8 +3,9 @@
     <div class="row">
       <div class="col-md-12">
         <div class="header">
-          <h2 id="title"><span class="emphasize">Vu</span>TimeLog</h2>&nbsp;/&nbsp;
-          <span id="nav-links">
+          <h2 id="title"><span class="emphasize">Vu</span>TimeLog</h2>
+          <span v-if="getAuthStat" id="nav-links">
+            /&nbsp;
             <router-link v-show="getActiveProject !== null" to="/tracker">Tracker</router-link>
             <router-link to="/projects">Projects</router-link>
             <a @click="logout()">Logout</a>
@@ -27,9 +28,11 @@ export default {
   methods: {
     logout () {
       auth.logout()
+      this.$store.dispatch('logout')
+      this.$router.push('/')
     }
   },
-  computed: mapGetters(['getActiveProject']),
+  computed: mapGetters(['getActiveProject', 'getAuthStat']),
   store
 }
 </script>

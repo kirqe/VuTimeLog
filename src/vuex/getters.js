@@ -18,5 +18,6 @@ export default {
   },
   getNewLog: state => state.newLog,
   getLogs: state => state.activeProject.logs,
-  getErrorStat: state => state.error
+  getErrorStat: state => state.error,
+  getAuthStat: state => state.user.authenticated
 }

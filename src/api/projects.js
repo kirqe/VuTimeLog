@@ -15,9 +15,9 @@ export default {
   saveProject: (data) => {
     return axios.post(Projects, {project: data}, auth.getHeader())
   },
-  // updateProject: (data) => {
-  //   return ProjectsResource.update({ id: data.id }, data)
-  // },
+  updateProject: (project) => {
+    return axios.put(Projects + project.id, project, auth.getHeader())
+  },
   deleteProject: (id) => {
     return axios.delete(Projects + id, auth.getHeader())
   }

@@ -7,7 +7,7 @@
       <controls-component></controls-component>
     </div>
     <summary-component :project="project"></summary-component>
-    <button class="btn btn-sm btn-danger" @click.prevent="deleteProject(project.id)">Delete this project (no confirmation)</button>
+    <button class="btn btn-block btn-danger dp" @click.prevent="deleteProject(project.id)">Delete this project (no confirmation)</button>
   </div>
 </template>
 
@@ -53,5 +53,8 @@ export default {
   }
   .error {
     border-color: #E68F8D;
+  }
+  .dp {
+    margin-bottom: 15px;
   }
 </style>

@@ -18,7 +18,9 @@ const state = {
     name: '',
     time: null
   },
-  authenticated: false
+  user: {
+    authenticated: false
+  }
 }
 
 export default new Vuex.Store({

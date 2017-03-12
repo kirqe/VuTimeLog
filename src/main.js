@@ -20,12 +20,24 @@ const routes = [
   { path: '/projects', component: Projects },
   { path: '/projects/:id', name: 'project', component: Tracker },
   { path: '/about', component: About },
-  { path: '/auth', component: Authentication }
+  { path: '/auth', component: Authentication },
+  { path: '*', component: Projects }
 ]
 
 const router = new VueRouter({
   mode: 'history',
   routes // short for routes: routes
+})
+
+router.beforeEach((to, from, next) => {
+  let ac = window.localStorage.getItem('access_token')
+  if (to.path === '/' || to.path === '/auth') {
+    next()
+  } else if (ac) {
+    next()
+  } else {
+    window.location.href = '/'
+  }
 })
 
 /* eslint-disable no-new */

@@ -56,6 +56,12 @@ export default {
     }
     clearNewLog(state)
     setTimeout(toggle, 3000)
+  },
+  [types.LOGIN] (state) {
+    state.user.authenticated = true
+  },
+  [types.LOGOUT] (state) {
+    state.user.authenticated = false
   }
 }
 

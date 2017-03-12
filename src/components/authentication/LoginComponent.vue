@@ -30,6 +30,7 @@ export default {
       api.login(this.cred).then((res) => {
         window.localStorage.setItem('access_token', res.data.access_token)
         this.$router.push('/projects')
+        this.$store.dispatch('login')
       })
     }
   }

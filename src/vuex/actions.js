@@ -46,8 +46,7 @@ export default {
       commit(types.DELETE_PROJECT, id)
     })
   },
-  updateProject: (store, id) => {
-    let project = getters.getProjectById(store.state, id)
+  updateProject: (store, project) => {
     api.updateProject(project)
   },
   setActiveProject: ({commit}, project) => {
@@ -63,5 +62,11 @@ export default {
     }, response => {
       commit(types.ERROR)
     })
+  },
+  login: ({commit}) => {
+    commit(types.LOGIN)
+  },
+  logout: ({commit}) => {
+    commit(types.LOGOUT)
   }
 }
