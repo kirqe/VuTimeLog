@@ -17,9 +17,6 @@ export default {
   register: (cred) => {
     return axios.post(Users, cred)
   },
-  logout: () => {
-    window.localStorage.removeItem('access_token')
-  },
   getHeader: () => {
     return {
       headers: {

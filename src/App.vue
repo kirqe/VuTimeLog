@@ -4,7 +4,7 @@
       <div class="col-md-12">
         <div class="header">
           <h2 id="title"><span class="emphasize">Vu</span>TimeLog</h2>
-          <span v-if="getAuthStat" id="nav-links">
+          <span v-if="getUser.authenticated" id="nav-links">
             /&nbsp;
             <router-link v-show="getActiveProject !== null" to="/tracker">Tracker</router-link>
             <router-link to="/projects">Projects</router-link>
@@ -22,17 +22,13 @@
 
 <script>
 import store from './vuex/store'
-import auth from './api/auth'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
-  methods: {
-    logout () {
-      auth.logout()
-      this.$store.dispatch('logout')
-      this.$router.push('/')
-    }
+  methods: mapActions(['logout', 'jwtAuth']),
+  computed: mapGetters(['getActiveProject', 'getUser']),
+  mounted () {
+    this.jwtAuth()
   },
-  computed: mapGetters(['getActiveProject', 'getAuthStat']),
   store
 }
 </script>

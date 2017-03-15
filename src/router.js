@@ -2,6 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from './vuex/store'
+import getters from './vuex/getters'
 
 // Views
 import Home from './views/Home'
@@ -28,14 +30,19 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  let token = window.localStorage.getItem('access_token')
-  if (to.path === '/' || to.path === '/auth') {
-    next()
-  } else if (token) {
-    next()
+  var user = getters.getUser(store.state)
+  if (user.authenticated) {
+    if (to.path === '/' || to.path === '/auth') {
+      router.push('/projects')
+    }
   } else {
-    router.push('/')
+    if (to.path === '/' || to.path === '/auth') {
+      next()
+    } else {
+      router.push('/')
+    }
   }
+  next()
 })
 
 export default router

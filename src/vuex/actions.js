@@ -1,6 +1,7 @@
 import * as types from './mutation_types'
 import getters from './getters'
 import api from '../api'
+import router from '../router'
 // import _ from 'underscore'
 
 export default {
@@ -16,12 +17,6 @@ export default {
     }, response => {
       store.commit(types.ERROR)
     })
-
-    // var fetch = () => {
-    //   store.dispatch('fetchProject', newLog.project_id)
-    // }
-    //
-    // setTimeout(fetch, 2000)
   },
   // PROJECTS
   fetchProjects: ({commit}) => {
@@ -63,10 +58,26 @@ export default {
       commit(types.ERROR)
     })
   },
-  login: ({commit}) => {
-    commit(types.LOGIN)
+  login: ({commit}, cred) => {
+    if (window.localStorage.getItem('access_token')) {
+      commit(types.LOGIN)
+      router.push('/projects')
+    } else {
+      api.login(cred).then(response => {
+        window.localStorage.setItem('access_token', response.data.access_token)
+        commit(types.LOGIN)
+        router.push('/projects')
+      })
+    }
   },
   logout: ({commit}) => {
     commit(types.LOGOUT)
+    window.localStorage.removeItem('access_token')
+    router.push('/')
+  },
+  jwtAuth ({commit}) {
+    if (window.localStorage.getItem('access_token')) {
+      commit(types.LOGIN)
+    }
   }
 }
