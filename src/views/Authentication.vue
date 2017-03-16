@@ -1,13 +1,21 @@
 <template lang="html">
-  <div class="row auth">
-    <div class="col-md-4">
-      <login-component></login-component>
+  <div class="container">
+    <div class="row">
+      <div v-show="err" class="col-md-12">
+        <div class="alert alert-danger">Failed to proceed request</div>
+      </div>
     </div>
-    <div class="col-md-4 or">
-      <h2 class="text-center">OR</h2>
-    </div>
-    <div class="col-md-4">
-      <register-component></register-component>
+    <div class="row auth">
+
+      <div class="col-md-4">
+        <login-component></login-component>
+      </div>
+      <div class="col-md-4 or">
+        <h2 class="text-center">OR</h2>
+      </div>
+      <div class="col-md-4">
+        <register-component></register-component>
+      </div>
     </div>
   </div>
 </template>
@@ -15,12 +23,16 @@
 <script>
 import LoginComponent from 'components/authentication/LoginComponent'
 import RegisterComponent from 'components/authentication/RegisterComponent'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
     LoginComponent,
     RegisterComponent
-  }
+  },
+  computed: mapGetters({
+    err: 'getErrorStat'
+  })
 }
 </script>
 

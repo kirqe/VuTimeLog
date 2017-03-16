@@ -3,8 +3,6 @@ import axios from 'axios'
 
 Vue.prototype.$axios = axios
 
-// const Projects = 'http://localhost:3000/api/v1/projects/'
-// const Logs = 'http://localhost:3000/api/v1/logs/'
 const Auth = 'http://localhost:3000/api/v1/auth/'
 const Users = 'http://localhost:3000/api/v1/users/'
 

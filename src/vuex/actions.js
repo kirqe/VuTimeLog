@@ -58,8 +58,21 @@ export default {
       commit(types.ERROR)
     })
   },
+  register: ({dispatch, commit}, cred) => {
+    api.register(cred).then(response => {
+      commit(types.REGISTER)
+      let cred = {
+        email: response.data.email,
+        password: response.data.password
+      }
+      dispatch('login', cred)
+    }, response => {
+      commit(types.ERROR)
+    })
+  },
   login: ({commit}, cred) => {
-    if (window.localStorage.getItem('access_token')) {
+    var token = window.localStorage.getItem('access_token')
+    if (token) {
       commit(types.LOGIN)
       router.push('/projects')
     } else {
@@ -70,7 +83,8 @@ export default {
       })
     }
   },
-  logout: ({commit}) => {
+  logout: ({dispatch, store, commit}) => {
+    dispatch('stop', store)
     commit(types.LOGOUT)
     window.localStorage.removeItem('access_token')
     router.push('/')

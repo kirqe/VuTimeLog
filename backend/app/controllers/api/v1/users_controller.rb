@@ -10,16 +10,19 @@ module Api::V1
       @user = User.new(user_params)
 
       if @user.save
-        render json: @user, status: :created, location: @user
+        render json: @user, status: :created
       else
         render json: @user.errors, status: :unprocessable_entity
       end
     end
 
     private
+      # for some reasons I can't make a json post request while keeping
+      # require(:user)
+      # params.require(:user).permit(:name, :email, :password)
 
       def user_params
-        params.require(:user).permit(:name, :email)
+        params.permit(:name, :email, :password)
       end
   end
 end

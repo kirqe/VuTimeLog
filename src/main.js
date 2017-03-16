@@ -3,7 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import filters from './filters'
+import VeeValidate from 'vee-validate'
 import router from './router'
+
+Vue.use(VeeValidate)
 
 /* eslint-disable no-new */
 new Vue({
