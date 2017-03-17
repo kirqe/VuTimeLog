@@ -83,13 +83,12 @@ export default {
       })
     }
   },
-  logout: ({dispatch, store, commit}) => {
-    dispatch('stop', store)
+  logout: ({commit}) => {
     commit(types.LOGOUT)
     window.localStorage.removeItem('access_token')
     router.push('/')
   },
-  jwtAuth ({commit}) {
+  jwtAuth: ({commit}) => {
     if (window.localStorage.getItem('access_token')) {
       commit(types.LOGIN)
     }

@@ -24,8 +24,16 @@
 import store from './vuex/store'
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  methods: mapActions(['logout', 'jwtAuth']),
-  computed: mapGetters(['getActiveProject', 'getUser']),
+  methods: {
+    ...mapActions(['jwtAuth']),
+    logout () {
+      if (this.isTracking) {
+        this.$store.dispatch('stop')
+      }
+      this.$store.dispatch('logout')
+    }
+  },
+  computed: mapGetters(['getActiveProject', 'getUser', 'isTracking']),
   mounted () {
     this.jwtAuth()
   },
