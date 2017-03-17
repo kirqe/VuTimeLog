@@ -16,3 +16,11 @@ npm run dev
 # build for production with minification
 npm run build
 ```
+
+api
+
+```bash
+cd backend
+bundle
+rails s
+```
