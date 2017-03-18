@@ -11,10 +11,11 @@ import {mapGetters, mapActions} from 'vuex'
 export default {
   computed: mapGetters(['isStarted', 'isStopped', 'getNewLog']),
   methods: {
-    ...mapActions(['start']),
+    ...mapActions(['start', 'fetchProject']),
     stop () {
       this.$emit('stopped')
       this.$store.dispatch('stop')
+      this.fetchProject(this.getNewLog.project_id)
     }
   }
 }

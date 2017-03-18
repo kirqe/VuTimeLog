@@ -71,17 +71,14 @@ export default {
     })
   },
   login: ({commit}, cred) => {
-    var token = window.localStorage.getItem('access_token')
-    if (token) {
+    api.login(cred).then(response => {
+      window.localStorage.setItem('access_token', response.data.access_token)
       commit(types.LOGIN)
       router.push('/projects')
-    } else {
-      api.login(cred).then(response => {
-        window.localStorage.setItem('access_token', response.data.access_token)
-        commit(types.LOGIN)
-        router.push('/projects')
-      })
-    }
+    }, response => {
+      commit(types.ERROR)
+      router.push('/auth')
+    })
   },
   logout: ({commit}) => {
     commit(types.LOGOUT)

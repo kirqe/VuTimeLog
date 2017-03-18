@@ -6,9 +6,9 @@ module Api::V1
       user = User.find_by(email: params[:email])
       if user && user.authenticate(params[:password])
         token = JsonWebToken.encode(user_id: user.id)
-        render json: { access_token: token }
+        render json: { access_token: token }, status: :ok
       else
-        render json: { errors: 'invalid credentials' }
+        render json: { errors: 'invalid credentials' }, status: :unprocessable_entity
       end
     end
   end

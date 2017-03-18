@@ -7,7 +7,16 @@
       <controls-component></controls-component>
     </div>
     <summary-component :project="project"></summary-component>
-    <button class="btn btn-block btn-danger dp" @click.prevent="deleteProject(project.id)">Delete this project (no confirmation)</button>
+    <div class="dropdown">
+      <button class="btn btn-block btn-default dropdown-toggle dp" type="button" data-toggle="dropdown">Options
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu btn-block">
+        <!-- Add export later -->
+        <!-- <li><a @click.prevent="exportProject(project.id)">Export</a></li> -->
+        <li><a @click.prevent="deleteProject(project.id)">Delete this project (no confirmation)</a></li>
+      </ul>
+    </div>
+
   </div>
 </template>
 

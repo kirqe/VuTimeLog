@@ -1,16 +1,20 @@
 <template lang="html">
   <div class="record">
     <span class="label time">{{ log.time | htime }}</span> - {{log.name}}
-    <span class="del pull-right" @click="deleteLog(log.id)"><i class="glyphicon glyphicon-trash"></i></span>
+    <span class="del pull-right" @click="del(log)"><i class="glyphicon glyphicon-trash"></i></span>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 export default {
-  methods: mapActions({
-    deleteLog: 'deleteLog'
-  }),
+  methods: {
+    ...mapActions(['deleteLog', 'fetchProject']),
+    del (log) {
+      this.deleteLog(log.id)
+      this.fetchProject(log.project_id)
+    }
+  },
   props: ['log']
 }
 </script>

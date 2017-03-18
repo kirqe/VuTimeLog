@@ -1,3 +1,3 @@
 class LogSerializer < ActiveModel::Serializer
-  attributes :id, :name, :time
+  attributes :id, :project_id, :name, :time
 end
