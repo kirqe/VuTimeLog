@@ -6,8 +6,10 @@ import router from '../router'
 
 export default {
   // TRACKER
-  start: ({commit}) => {
-    commit(types.START)
+  start: (store) => {
+    if (!getters.isStarted(store.state)) {
+      store.commit(types.START)
+    }
   },
   stop: (store) => {
     store.commit(types.STOP)
