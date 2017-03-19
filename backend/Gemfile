@@ -12,6 +12,7 @@ gem 'active_model_serializers'
 gem 'rack-cors'
 gem 'jwt'
 gem 'bcrypt'
+gem 'prawn'
 
 group :development, :test do
   gem 'sqlite3'

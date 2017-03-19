@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :projects
       resources :logs, only: [:create, :destroy]
       post 'auth', to: 'authentication#authenticate_user'
+      get 'export/:id(.:format)', to: 'projects#export', as: :export
     end
   end
 end

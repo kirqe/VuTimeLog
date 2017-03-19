@@ -24,3 +24,5 @@ cd backend
 bundle
 rails s
 ```
+
+update `default_url_options` in `application.rb` for prod

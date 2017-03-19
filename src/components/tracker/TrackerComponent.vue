@@ -11,8 +11,7 @@
       <button class="btn btn-block btn-default dropdown-toggle dp" type="button" data-toggle="dropdown">Options
       <span class="caret"></span></button>
       <ul class="dropdown-menu btn-block">
-        <!-- Add export later -->
-        <!-- <li><a @click.prevent="exportProject(project.id)">Export</a></li> -->
+        <li><a :href="project.export_pdf" download='repoert'>Export as PDF</a></li>
         <li><a @click.prevent="deleteProject(project.id)">Delete this project (no confirmation)</a></li>
       </ul>
     </div>
@@ -26,7 +25,6 @@ import TimeComponent from './TimeComponent'
 import NoteComponent from './NoteComponent'
 import ControlsComponent from './ControlsComponent'
 import SummaryComponent from './SummaryComponent'
-
 import { mapGetters } from 'vuex'
 
 export default {

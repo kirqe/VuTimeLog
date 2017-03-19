@@ -4,3 +4,4 @@
 #   http_host: 'example.org',
 #   https: false
 # )
+Rails.application.routes.default_url_options = { host: 'localhost:3000' }

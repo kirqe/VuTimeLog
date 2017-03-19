@@ -1,6 +1,9 @@
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :title, :rate, :created_at, :logs_count, :total_time, :earned
+  include Rails.application.routes.url_helpers
+
+  attributes :id, :title, :rate, :created_at, :logs_count, :total_time, :earned, :export_pdf
   has_many :logs
+
 
   def logs_count
     object.logs.length
@@ -17,6 +20,10 @@ class ProjectSerializer < ActiveModel::Serializer
 
   def total_time
     object.logs.map(&:time).reduce(:+)
+  end
+
+  def export_pdf
+    api_v1_export_url(object) + ".pdf"
   end
 
 end

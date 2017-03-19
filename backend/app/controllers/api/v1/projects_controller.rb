@@ -1,6 +1,6 @@
 module Api::V1
   class ProjectsController < ApiController
-    before_action :set_project, only: [:show, :update, :destroy]
+    before_action :set_project, only: [:show, :update, :destroy, :export]
 
     def index
       render json: @current_user.projects.with_logs
@@ -35,10 +35,15 @@ module Api::V1
       @project.destroy
     end
 
+    def export
+      pdf = ProjectReport.new(@project)
+      send_data pdf.render, filename: 'project_report.pdf', type: 'application/pdf'
+    end
+
     private
 
     def set_project
-      @project = Project.find(params[:id])
+      @project = @current_user.projects.find(params[:id])
     end
 
     def project_params
