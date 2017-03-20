@@ -15,7 +15,6 @@ export default {
     stop () {
       this.$emit('stopped')
       this.$store.dispatch('stop')
-      this.fetchProject(this.getNewLog.project_id)
     }
   }
 }

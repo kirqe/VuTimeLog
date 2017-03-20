@@ -12,7 +12,6 @@ export default {
     ...mapActions(['deleteLog', 'fetchProject']),
     del (log) {
       this.deleteLog(log.id)
-      this.fetchProject(log.project_id)
     }
   },
   props: ['log']

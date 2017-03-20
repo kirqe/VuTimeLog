@@ -16,6 +16,7 @@ export default {
     let newLog = getters.getNewLog(store.state)
     api.createNewLog(newLog).then(response => {
       store.commit(types.ADD_LOG, response.data)
+      store.dispatch('fetchProject', newLog.project_id)
     }, response => {
       store.commit(types.ERROR)
     })
@@ -53,11 +54,13 @@ export default {
   setNote: ({commit}, event) => {
     commit(types.SET_NOTE, event.target.value)
   },
-  deleteLog: ({store, commit}, id) => {
+  deleteLog: (store, id) => {
+    let proj = getters.getActiveProject(store.state)
     api.deleteLog(id).then(response => {
-      commit(types.DELETE_LOG, id)
+      store.commit(types.DELETE_LOG, id)
+      store.dispatch('fetchProject', proj.id)
     }, response => {
-      commit(types.ERROR)
+      store.commit(types.ERROR)
     })
   },
   register: ({dispatch, commit}, cred) => {
