@@ -8,7 +8,7 @@ class ProjectReport < Prawn::Document
   end
 
   def header
-    text "Project: #{@project.title} \n Created: #{@project.created_at.strftime('%d.%m.%Y')} \n Earned: #{earned(@project)} \n Time: #{time(@project.logs.map(&:time).reduce(:+))}", size: 18, style: :bold
+    text "Project: #{@project.title} \n Created: #{@project.created_at.strftime('%d.%m.%Y')} \n Earned: $#{earned(@project)} \n Total Time: #{time(@project.logs.map(&:time).reduce(:+))}", size: 17, style: :bold
   end
 
   def logs_list

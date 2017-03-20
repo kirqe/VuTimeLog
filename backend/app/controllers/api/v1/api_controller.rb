@@ -13,7 +13,9 @@ module Api::V1
     end
 
     def decoded_auth_token
-      if request.headers['Authorization'].present?
+      if params[:tkn]
+        JsonWebToken.decode(params[:tkn])
+      elsif request.headers['Authorization'].present?
         token = request.headers['Authorization'].split(' ').last
         JsonWebToken.decode(token)
       end

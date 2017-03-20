@@ -11,11 +11,10 @@
       <button class="btn btn-block btn-default dropdown-toggle dp" type="button" data-toggle="dropdown">Options
       <span class="caret"></span></button>
       <ul class="dropdown-menu btn-block">
-        <li><a :href="project.export_pdf" download='repoert'>Export as PDF</a></li>
+        <li><a :href="dllink" download='report.pdf'>Export as PDF</a></li>
         <li><a @click.prevent="deleteProject(project.id)">Delete this project (no confirmation)</a></li>
       </ul>
     </div>
-
   </div>
 </template>
 
@@ -35,9 +34,15 @@ export default {
     ControlsComponent,
     SummaryComponent
   },
-  computed: mapGetters({
-    istracking: 'isTracking'
-  }),
+  computed: {
+    ...mapGetters({
+      istracking: 'isTracking'
+    }),
+    dllink () {
+      let tkn = window.localStorage.getItem('access_token')
+      return `${this.project.export_pdf}?tkn=${tkn}`
+    }
+  },
   methods: {
     deleteProject (id) {
       this.$store.dispatch('deleteProject', id)

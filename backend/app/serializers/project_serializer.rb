@@ -23,7 +23,7 @@ class ProjectSerializer < ActiveModel::Serializer
   end
 
   def export_pdf
-    api_v1_export_url(object) + ".pdf"
+    export_api_v1_project_url(object)
   end
 
 end
