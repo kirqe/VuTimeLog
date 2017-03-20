@@ -2,6 +2,8 @@
 
 VuTimeLog is a timetracker ish sample app built with the following tools to learn some vue.js
 
+![demo](./demo.gif)
+
 - [vue.js 2](https://github.com/vuejs/vue)
 - [vuex](https://github.com/vuejs/vuex)
 - [vue-router](https://github.com/vuejs/vue-router)
