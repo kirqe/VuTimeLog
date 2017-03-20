@@ -24,6 +24,9 @@ api
 ```bash
 cd backend
 bundle
+rake db:create
+rake db:migrate
+rake db:seed # check db/seeds.rb
 rails s
 ```
 
