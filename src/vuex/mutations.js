@@ -60,8 +60,9 @@ export default {
   [types.REGISTER] (state) {
     //
   },
-  [types.LOGIN] (state) {
+  [types.LOGIN] (state, token) {
     state.user.authenticated = true
+    state.user.token = token
   },
   [types.LOGOUT] (state) {
     state.user.authenticated = false

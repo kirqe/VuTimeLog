@@ -78,7 +78,7 @@ export default {
   login: ({commit}, cred) => {
     api.login(cred).then(response => {
       window.localStorage.setItem('access_token', response.data.access_token)
-      commit(types.LOGIN)
+      commit(types.LOGIN, response.data.access_token)
       router.push('/projects')
     }, response => {
       commit(types.ERROR)
@@ -91,8 +91,9 @@ export default {
     router.push('/')
   },
   jwtAuth: ({commit}) => {
-    if (window.localStorage.getItem('access_token')) {
-      commit(types.LOGIN)
+    let tkn = window.localStorage.getItem('access_token')
+    if (tkn) {
+      commit(types.LOGIN, tkn)
     }
   }
 }

@@ -19,7 +19,8 @@ const state = {
     time: null
   },
   user: {
-    authenticated: false
+    authenticated: false,
+    token: window.localStorage.getItem('access_token')
   }
 }
 
