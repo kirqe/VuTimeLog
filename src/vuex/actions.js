@@ -6,19 +6,19 @@ import router from '../router'
 
 export default {
   // TRACKER
-  start: (store) => {
-    if (!getters.isStarted(store.state)) {
-      store.commit(types.START)
+  start: ({commit, state}) => {
+    if (!getters.isStarted(state)) {
+      commit(types.START)
     }
   },
-  stop: (store) => {
-    store.commit(types.STOP)
-    let newLog = getters.getNewLog(store.state)
+  stop: ({commit, dispatch, state}) => {
+    commit(types.STOP)
+    let newLog = getters.getNewLog(state)
     api.createNewLog(newLog).then(response => {
-      store.commit(types.ADD_LOG, response.data)
-      store.dispatch('fetchProject', newLog.project_id)
+      commit(types.ADD_LOG, response.data)
+      dispatch('fetchProject', newLog.project_id)
     }, response => {
-      store.commit(types.ERROR)
+      commit(types.ERROR)
     })
   },
   // PROJECTS
@@ -27,7 +27,7 @@ export default {
       commit(types.FETCH_PROJECTS, response.data)
     })
   },
-  fetchProject: ({store, commit}, id) => {
+  fetchProject: ({commit}, id) => {
     if (id) {
       api.fetchProjectById(id).then(response => {
         commit(types.SET_ACTIVE_PROJECT, response.data)
@@ -44,7 +44,7 @@ export default {
       commit(types.DELETE_PROJECT, id)
     })
   },
-  updateProject: (store, project) => {
+  updateProject: (project) => {
     api.updateProject(project)
   },
   setActiveProject: ({commit}, project) => {
@@ -54,13 +54,13 @@ export default {
   setNote: ({commit}, event) => {
     commit(types.SET_NOTE, event.target.value)
   },
-  deleteLog: (store, id) => {
-    let proj = getters.getActiveProject(store.state)
+  deleteLog: ({commit, dispatch, state}, id) => {
+    let proj = getters.getActiveProject(state)
     api.deleteLog(id).then(response => {
-      store.commit(types.DELETE_LOG, id)
-      store.dispatch('fetchProject', proj.id)
+      commit(types.DELETE_LOG, id)
+      dispatch('fetchProject', proj.id)
     }, response => {
-      store.commit(types.ERROR)
+      commit(types.ERROR)
     })
   },
   register: ({dispatch, commit}, cred) => {
